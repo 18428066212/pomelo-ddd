@@ -48,6 +48,10 @@ public final class ThreadPoolUtil {
         threadPoolExecutor.execute(runnable);
     }
 
+    public static void shutdown() {
+        threadPoolExecutor.shutdown();
+    }
+
 //endregion
 
 //region public methods

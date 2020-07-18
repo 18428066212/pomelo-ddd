@@ -2,6 +2,7 @@ package com.pomelo.ddd.example;
 
 import com.pomelo.ddd.core.Pomelo;
 import com.pomelo.ddd.core.utils.Scanner;
+import com.pomelo.ddd.core.utils.ThreadPoolUtil;
 
 
 public class Main {
@@ -27,6 +28,6 @@ public class Main {
 
         System.out.println(student);
 
-
+        ThreadPoolUtil.shutdown();
     }
 }
