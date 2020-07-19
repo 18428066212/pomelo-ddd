@@ -39,7 +39,7 @@ public class Pomelo<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public <R, C> R command(C c) {
+    public <R, C> R send(C c) {
         try {
             return (R) aggregateEntity.getCommandHandlerMap().get(c.getClass()).invoke(t, c);
         } catch (IllegalAccessException e) {

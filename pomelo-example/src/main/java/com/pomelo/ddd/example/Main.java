@@ -3,10 +3,13 @@ package com.pomelo.ddd.example;
 import com.pomelo.ddd.core.Pomelo;
 import com.pomelo.ddd.core.utils.Scanner;
 import com.pomelo.ddd.core.utils.ThreadPoolUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class Main {
 
+    private static Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
 
@@ -18,8 +21,9 @@ public class Main {
         attendYuWenKe.setChapter("Chapter_1");
         attendYuWenKe.setScore(2);
 
-        Student student = pomelo.load("1").command(attendYuWenKe);
+        Student student = pomelo.load("1").send(attendYuWenKe);
 
+        logger.info("over");
         try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
@@ -29,5 +33,6 @@ public class Main {
         System.out.println(student);
 
         ThreadPoolUtil.shutdown();
+
     }
 }
