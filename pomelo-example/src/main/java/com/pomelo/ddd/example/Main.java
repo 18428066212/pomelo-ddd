@@ -22,7 +22,11 @@ public class Main {
         Student student = PomeloUtil.peel(StudentAggregate.class)
                 .load("1")
                 .command(
-                        AttendYuWenKe.builder().chapter("Chapter_1").score(2).build()
+                        AttendYuWenKe
+                                .builder()
+                                .chapter("Chapter_1")
+                                .score(2)
+                                .build()
                 );
 
         logger.info("over");
