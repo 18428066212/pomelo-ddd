@@ -1,7 +1,7 @@
 package com.pomelo.ddd.core.utils;
 
 import com.pomelo.ddd.core.annotation.Aggregate;
-import com.pomelo.ddd.core.annotation.Command;
+import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.EventHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
 import com.pomelo.ddd.core.entity.AggregateEntity;
@@ -78,9 +78,9 @@ public class Scanner {
                     loadMethod = method;
                     continue;
                 }
-                Command commandAnnotation = method.getAnnotation(Command.class);
-                if (commandAnnotation != null) {
-                    commandMethod.put(commandAnnotation.value(), method);
+                CommandHandler commandHandlerAnnotation = method.getAnnotation(CommandHandler.class);
+                if (commandHandlerAnnotation != null) {
+                    commandMethod.put(commandHandlerAnnotation.value(), method);
                 }
             }
             if (loadMethodCount == 0) {

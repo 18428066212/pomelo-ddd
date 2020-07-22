@@ -1,7 +1,7 @@
 package com.pomelo.ddd.example;
 
 import com.pomelo.ddd.core.annotation.Aggregate;
-import com.pomelo.ddd.core.annotation.Command;
+import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.event.Launcher;
@@ -18,7 +18,7 @@ public class StudentAggregate {
     }
 
 
-    @Command(AttendYuWenKe.class)
+    @CommandHandler(AttendYuWenKe.class)
     public Student attendYuWenKe(AttendYuWenKe attendYuWenKe) {
 
         if (this.student.isInClass()) {

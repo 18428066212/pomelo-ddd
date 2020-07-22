@@ -1,6 +1,17 @@
 package com.pomelo.ddd.example;
 
 
+import com.pomelo.ddd.core.annotation.Command;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Command
 public class AttendYuWenKe {
 
     private String chapter;

@@ -11,4 +11,3 @@ package com.pomelo.ddd.example;
 //command 上语文课
 //command 写作文
 //event 上完语文课，学分+1
-//event 写完作文，学分+2

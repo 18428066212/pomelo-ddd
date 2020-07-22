@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 public class Launcher {
-    
+
     public static <T> void emit(T t) {
 
         Class<?> aClass = t.getClass();

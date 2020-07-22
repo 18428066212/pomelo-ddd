@@ -13,6 +13,7 @@
     <modules>
         <module>pomelo-core</module>
         <module>pomelo-example</module>
+        <module>pomelo-logging</module>
     </modules>
 
     <properties>
