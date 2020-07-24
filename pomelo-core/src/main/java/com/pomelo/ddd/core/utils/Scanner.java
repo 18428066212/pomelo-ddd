@@ -4,6 +4,8 @@ import com.pomelo.ddd.core.annotation.Aggregate;
 import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.EventHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
+import com.pomelo.ddd.core.bean.Creator;
+import com.pomelo.ddd.core.bean.DefaultCreator;
 import com.pomelo.ddd.core.entity.AggregateEntity;
 import com.pomelo.ddd.core.manager.AggregateManager;
 import com.pomelo.ddd.core.manager.EventHandlerManager;
@@ -15,11 +17,33 @@ import org.reflections.scanners.MethodParameterScanner;
 import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Scanner {
+
+    private static Creator creator;
+
+    private Scanner() {
+
+    }
+
+    static {
+        ServiceLoader<Creator> spiLoader = ServiceLoader.load(Creator.class);
+        int count = 0;
+        for (Creator c : spiLoader) {
+            if (count == 1) {
+                break;
+            }
+            count++;
+            creator = c;
+        }
+
+        if (count == 0) {
+            creator = new DefaultCreator();
+        }
+
+    }
+
 
     @SuppressWarnings("unchecked")
     public static void scan(String backPackage) {
@@ -42,16 +66,8 @@ public class Scanner {
         for (Method method : methodsAnnotatedWithSet) {
 
             Class<?> declaringClass = method.getDeclaringClass();
+            Object o = creator.create(declaringClass);
 
-            Object o = null;
-            try {
-                //是否从Spring 容器中获取
-                o = declaringClass.newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
             EventHandler annotation = method.getAnnotation(EventHandler.class);
             Class<?> value = annotation.value();
 
