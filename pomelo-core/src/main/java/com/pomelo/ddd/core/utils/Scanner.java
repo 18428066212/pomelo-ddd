@@ -17,7 +17,10 @@ import org.reflections.scanners.MethodParameterScanner;
 import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ServiceLoader;
+import java.util.Set;
 
 public class Scanner {
 
@@ -32,7 +35,7 @@ public class Scanner {
         int count = 0;
         for (Creator c : spiLoader) {
             if (count == 1) {
-                break;
+                throw new RuntimeException("只需要一个EventCreator");
             }
             count++;
             creator = c;
