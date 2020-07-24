@@ -18,7 +18,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         Student student = PomeloUtil.peel(StudentAggregate.class)
                 .load("1")
                 .command(
@@ -35,10 +34,8 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         System.out.println(student);
 
         ThreadPoolUtil.shutdown();
-
     }
 }
