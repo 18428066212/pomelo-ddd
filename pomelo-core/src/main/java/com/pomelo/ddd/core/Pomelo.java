@@ -2,7 +2,9 @@ package com.pomelo.ddd.core;
 
 import com.pomelo.ddd.core.annotation.Command;
 import com.pomelo.ddd.core.entity.AggregateEntity;
+import com.pomelo.ddd.core.exception.CommandNotFoundException;
 import com.pomelo.ddd.core.manager.AggregateManager;
+import com.pomelo.ddd.core.utils.ResolverUtil;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -11,6 +13,7 @@ public class Pomelo<T> {
     private T t;
 
     private final AggregateEntity aggregateEntity;
+
 
     @SuppressWarnings("unchecked")
     public Pomelo(Class<T> clazz) {
@@ -24,6 +27,12 @@ public class Pomelo<T> {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public Pomelo<T> injectFiled() {
+        ResolverUtil.resolve(this.t);
+        return this;
     }
 
 
@@ -44,8 +53,7 @@ public class Pomelo<T> {
         try {
             Command command = c.getClass().getAnnotation(Command.class);
             if (command == null) {
-                //TODO 如果没有打Command 标记必须抛出异常
-                throw new RuntimeException();
+                throw new CommandNotFoundException("缺少command注解");
             }
             return (R) aggregateEntity.getCommandHandlerMap().get(c.getClass()).invoke(t, c);
         } catch (IllegalAccessException e) {

@@ -8,6 +8,8 @@ public class PomeloUtil {
 
         Pomelo<T> pomelo = new Pomelo<>(clazz);
 
+        pomelo.injectFiled();
+
         return pomelo;
     }
 }
