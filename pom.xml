@@ -14,6 +14,7 @@
         <module>pomelo-core</module>
         <module>pomelo-example</module>
         <module>pomelo-logging</module>
+        <module>pomelo-starter</module>
     </modules>
 
     <properties>

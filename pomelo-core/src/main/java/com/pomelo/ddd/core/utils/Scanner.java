@@ -35,7 +35,7 @@ public class Scanner {
         int count = 0;
         for (Creator c : spiLoader) {
             if (count == 1) {
-                throw new RuntimeException("只需要一个EventCreator");
+                throw new RuntimeException("只需要一个Creator");
             }
             count++;
             creator = c;
@@ -69,7 +69,7 @@ public class Scanner {
         for (Method method : methodsAnnotatedWithSet) {
 
             Class<?> declaringClass = method.getDeclaringClass();
-            Object o = creator.create(declaringClass);
+            Object o = creator.createProxy(declaringClass);
 
             EventHandler annotation = method.getAnnotation(EventHandler.class);
             Class<?> value = annotation.value();
