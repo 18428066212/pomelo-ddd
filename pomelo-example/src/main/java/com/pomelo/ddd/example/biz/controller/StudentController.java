@@ -1,5 +1,6 @@
 package com.pomelo.ddd.example.biz.controller;
 
+import com.pomelo.ddd.core.Pomelo;
 import com.pomelo.ddd.core.utils.PomeloUtil;
 import com.pomelo.ddd.example.biz.student.StudentAggregate;
 import com.pomelo.ddd.example.biz.student.entity.Student;
@@ -19,10 +20,10 @@ public class StudentController {
 
     @GetMapping("/{number}")
     public Student query(@PathVariable("number") String number) {
+        Pomelo<StudentAggregate> pomelo = PomeloUtil.peel(StudentAggregate.class);
 
         StudentAggregate studentAggregate =
-                PomeloUtil.peel(StudentAggregate.class)
-                        .load(number)
+                pomelo.load(number)
                         .stop();
 
         return studentAggregate.getStudent();
