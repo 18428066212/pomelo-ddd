@@ -35,6 +35,9 @@ public class Pomelo<T> {
         return this;
     }
 
+    public T stop() {
+        return t;
+    }
 
     public Pomelo<T> load(Object... params) {
 
