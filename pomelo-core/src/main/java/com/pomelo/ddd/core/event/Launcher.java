@@ -1,6 +1,5 @@
 package com.pomelo.ddd.core.event;
 
-import com.pomelo.ddd.core.Pomelo;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.exception.PomeloException;
 import com.pomelo.ddd.core.manager.EventHandlerManager;
@@ -20,10 +19,9 @@ public class Launcher {
         methods.forEach(method -> {
             try {
                 method.invoke(EventHandlerManager.getObject(aClass), t);
-            } catch (IllegalAccessException e) {
+            } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
+                throw new PomeloException("Pomelo Exception");
             }
         });
     }
