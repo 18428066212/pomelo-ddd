@@ -1,4 +1,7 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz.student.event;
+
+import com.pomelo.ddd.example.biz.student.entity.Student;
+import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
 
 public class FinishCourseEvent {
 

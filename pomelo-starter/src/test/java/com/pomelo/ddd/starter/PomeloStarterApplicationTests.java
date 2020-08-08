@@ -1,4 +1,4 @@
-package com.pomelo.ddd.starter.pomelostarter;
+package com.pomelo.ddd.starter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

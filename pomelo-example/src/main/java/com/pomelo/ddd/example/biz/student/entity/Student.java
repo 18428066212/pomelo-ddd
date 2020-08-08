@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz.student.entity;
 
 
 public class Student {

@@ -1,8 +1,10 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz;
 
 import com.pomelo.ddd.core.utils.PomeloUtil;
-import com.pomelo.ddd.core.utils.Scanner;
 import com.pomelo.ddd.core.utils.ThreadPoolUtil;
+import com.pomelo.ddd.example.biz.student.StudentAggregate;
+import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
+import com.pomelo.ddd.example.biz.student.entity.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,12 +13,8 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
 
-    static {
-        Scanner.scan("com.pomelo.ddd");
-    }
 
-
-    public static void main(String[] args) {
+    public static void mainForTest() {
 
         Student student = PomeloUtil.peel(StudentAggregate.class)
                 .load("1")
