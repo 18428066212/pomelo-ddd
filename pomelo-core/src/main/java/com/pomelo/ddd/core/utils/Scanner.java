@@ -7,13 +7,12 @@ import com.pomelo.ddd.core.annotation.LoadMethod;
 import com.pomelo.ddd.core.bean.Creator;
 import com.pomelo.ddd.core.bean.DefaultCreator;
 import com.pomelo.ddd.core.entity.AggregateEntity;
+import com.pomelo.ddd.core.exception.PomeloException;
 import com.pomelo.ddd.core.manager.AggregateManager;
 import com.pomelo.ddd.core.manager.EventHandlerManager;
 import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
-import org.reflections.scanners.FieldAnnotationsScanner;
-import org.reflections.scanners.MethodAnnotationsScanner;
-import org.reflections.scanners.MethodParameterScanner;
+import org.reflections.scanners.*;
 import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.reflect.Method;
@@ -55,6 +54,8 @@ public class Scanner {
                 .forPackages(backPackage)
                 .addScanners(new FieldAnnotationsScanner())
                 .addScanners(new MethodAnnotationsScanner())
+                .addScanners(new SubTypesScanner())
+                .addScanners(new TypeAnnotationsScanner())
                 .addScanners(new MethodParameterScanner()));
 
         scanAggregate(reflections);
@@ -82,7 +83,7 @@ public class Scanner {
 
     @SuppressWarnings("unchecked")
     private static void scanAggregate(Reflections reflections) {
-        Set<Class<?>> aggregateClassSet = reflections.getTypesAnnotatedWith(Aggregate.class);
+        Set<Class<?>> aggregateClassSet = reflections.getTypesAnnotatedWith(Aggregate.class, true);
         for (Class<?> aClass : aggregateClassSet) {
             AggregateEntity aggregateEntity = new AggregateEntity();
             aggregateEntity.setAggregate(aClass);
@@ -103,10 +104,10 @@ public class Scanner {
                 }
             }
             if (loadMethodCount == 0) {
-                throw new RuntimeException(aClass.getName() + "没有找到 @LoadMethod 标记的方法");
+                throw new PomeloException(aClass.getName() + " 没有找到 @LoadMethod 标记的方法");
             }
             if (loadMethodCount > 1) {
-                throw new RuntimeException(aClass.getName() + "只能有一个 @LoadMethod 标记的方法");
+                throw new PomeloException(aClass.getName() + " 只能有一个 @LoadMethod 标记的方法");
             }
             aggregateEntity.setLoadMethod(loadMethod);
             aggregateEntity.setCommandHandlerMap(commandMethod);

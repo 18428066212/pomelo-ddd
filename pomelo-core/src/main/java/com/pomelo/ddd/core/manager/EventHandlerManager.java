@@ -12,10 +12,6 @@ public class EventHandlerManager {
 
     private static final Map<Class<?>, Object> objectMap = new HashMap<>();
 
-
-
-
-
     public static void addMethod(Class<?> aClass, Method method) {
         if (methodMap.get(aClass) == null) {
 

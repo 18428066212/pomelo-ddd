@@ -2,11 +2,11 @@ package com.pomelo.ddd.core.enums;
 
 public enum EventEmitWay {
     /**
-     * 同步
+     * 异步
      */
     ASYNC,
     /**
-     * 异步
+     * 同步
      */
     SYNC
 }

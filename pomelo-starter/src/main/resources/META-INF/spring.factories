@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationListener=\
+  com.pomelo.ddd.starter.config.PomeloListener,\
+  com.pomelo.ddd.starter.config.PomeloScanListener

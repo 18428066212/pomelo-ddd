@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz;
 
 /**
  * 整体逻辑

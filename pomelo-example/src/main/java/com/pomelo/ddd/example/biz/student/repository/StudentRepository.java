@@ -1,4 +1,6 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz.student.repository;
+
+import com.pomelo.ddd.example.biz.student.entity.Student;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,10 +1,14 @@
-package com.pomelo.ddd.example;
+package com.pomelo.ddd.example.biz.student;
 
 import com.pomelo.ddd.core.annotation.Aggregate;
 import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.event.Launcher;
+import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
+import com.pomelo.ddd.example.biz.student.entity.Student;
+import com.pomelo.ddd.example.biz.student.event.FinishCourseEvent;
+import com.pomelo.ddd.example.biz.student.repository.StudentRepository;
 
 
 @Aggregate
@@ -38,7 +42,7 @@ public class StudentAggregate {
         finishCourseEvent.setStudent(this.student);
         finishCourseEvent.setAttendYuWenKe(attendYuWenKe);
 
-        Launcher.emit(finishCourseEvent, EventEmitWay.SYNC);
+        Launcher.emit(finishCourseEvent, EventEmitWay.ASYNC);
 
         return this.student;
     }
