@@ -13,6 +13,8 @@ public final class Cache {
 
     /**
      * 禁止其他包调用
+     * <p>
+     * 缓存basePackage
      *
      * @param key
      * @param t
