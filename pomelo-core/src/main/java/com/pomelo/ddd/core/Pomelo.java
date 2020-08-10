@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Pomelo<T> {
 
-    private T t;
+    private final T t;
 
     private final AggregateEntity aggregateEntity;
 
@@ -31,9 +31,8 @@ public class Pomelo<T> {
     }
 
 
-    public Pomelo<T> injectFiled() {
+    public void injectFiled() {
         ResolverUtil.resolve(this.t);
-        return this;
     }
 
     public T stop() {

@@ -23,7 +23,9 @@ public class StudentController {
     public Student query(@PathVariable("number") String number) {
 
         Pomelo<StudentAggregate> pomelo = PomeloUtil.peel(StudentAggregate.class);
+
         pomelo.load(number);
+        
         try {
 
             return pomelo.command(
