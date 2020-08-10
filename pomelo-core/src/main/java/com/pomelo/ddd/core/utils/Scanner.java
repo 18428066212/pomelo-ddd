@@ -23,11 +23,20 @@ import java.util.Set;
 
 public class Scanner {
 
+    //region private vars
+
     private static Creator creator;
+
+    //endregion
+
+    //region constructor
 
     private Scanner() {
 
     }
+    //endregion
+
+    //region static block
 
     static {
         ServiceLoader<Creator> spiLoader = ServiceLoader.load(Creator.class);
@@ -45,9 +54,10 @@ public class Scanner {
         }
 
     }
+    //endregion
 
+    //region public methods
 
-    @SuppressWarnings("unchecked")
     public static void scan(String backPackage) {
 
         Reflections reflections = new Reflections(new ConfigurationBuilder()
@@ -63,6 +73,10 @@ public class Scanner {
         scanEventHandler(reflections);
 
     }
+
+    //endregion
+
+    //region private methods
 
     private static void scanEventHandler(Reflections reflections) {
         Set<Method> methodsAnnotatedWithSet = reflections.getMethodsAnnotatedWith(EventHandler.class);
@@ -114,4 +128,6 @@ public class Scanner {
             AggregateManager.add(aggregateEntity);
         }
     }
+
+    //endregion
 }
