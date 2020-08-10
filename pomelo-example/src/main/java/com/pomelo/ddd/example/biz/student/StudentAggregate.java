@@ -9,16 +9,21 @@ import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
 import com.pomelo.ddd.example.biz.student.entity.Student;
 import com.pomelo.ddd.example.biz.student.event.FinishCourseEvent;
 import com.pomelo.ddd.example.biz.student.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Aggregate
 public class StudentAggregate {
 
+
+    @Autowired
+    private StudentRepository studentRepository;
+
     private Student student;
 
     @LoadMethod
     public void load(String number) {
-        this.student = new StudentRepository().queryByNumber(number);
+        this.student = studentRepository.queryByNumber(number);
     }
 
 

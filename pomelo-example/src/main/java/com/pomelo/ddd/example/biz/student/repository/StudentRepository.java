@@ -1,10 +1,12 @@
 package com.pomelo.ddd.example.biz.student.repository;
 
 import com.pomelo.ddd.example.biz.student.entity.Student;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class StudentRepository {
 
 
