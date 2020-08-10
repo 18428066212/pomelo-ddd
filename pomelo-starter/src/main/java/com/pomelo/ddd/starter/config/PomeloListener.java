@@ -1,8 +1,6 @@
 package com.pomelo.ddd.starter.config;
 
 import com.pomelo.ddd.starter.annotation.PomeloBasePackage;
-import com.pomelo.ddd.starter.cache.Cache;
-import com.pomelo.ddd.starter.cache.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;

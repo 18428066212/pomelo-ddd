@@ -1,8 +1,6 @@
 package com.pomelo.ddd.starter.config;
 
 import com.pomelo.ddd.core.utils.Scanner;
-import com.pomelo.ddd.starter.cache.Cache;
-import com.pomelo.ddd.starter.cache.Const;
 import com.pomelo.ddd.starter.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
