@@ -7,7 +7,7 @@ import java.util.Map;
  * @author 何刚
  * @date 2020/8/8 14:06
  */
-public class Cache {
+public final class Cache {
 
     private static Map<String, Object> cache = new HashMap<>();
 
