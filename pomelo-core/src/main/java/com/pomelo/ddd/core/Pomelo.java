@@ -44,9 +44,16 @@ public class Pomelo<T> {
 
         try {
             aggregateEntity.getLoadMethod().invoke(t, params);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-            throw new PomeloException("聚合执行LoadMethod异常");
+            throw new InternalError(e.toString(), e);
+        } catch (InvocationTargetException e) {
+            Throwable t = e.getCause();
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new InternalError(t.toString(), t);
+            }
         }
         return this;
     }
@@ -66,10 +73,20 @@ public class Pomelo<T> {
             if (command == null) {
                 throw new CommandNotFoundException("缺少command注解");
             }
-            return (R) aggregateEntity.getCommandHandlerMap().get(c.getClass()).invoke(t, c);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            return (R) aggregateEntity
+                    .getCommandHandlerMap()
+                    .get(c.getClass()).invoke(t, c);
+
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-            throw new PomeloException("聚合执行LoadMethod异常");
+            throw new InternalError(e.toString(), e);
+        } catch (InvocationTargetException e) {
+            Throwable t = e.getCause();
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new InternalError(t.toString(), t);
+            }
         }
     }
 
@@ -88,9 +105,16 @@ public class Pomelo<T> {
         CommandHandleThreadPool.executeAsync(() -> {
             try {
                 aggregateEntity.getCommandHandlerMap().get(c.getClass()).invoke(t, c);
-            } catch (IllegalAccessException | InvocationTargetException e) {
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
-                throw new PomeloException("聚合执行LoadMethod异常");
+                throw new InternalError(e.toString(), e);
+            } catch (InvocationTargetException e) {
+                Throwable t = e.getCause();
+                if (t instanceof RuntimeException) {
+                    throw (RuntimeException) t;
+                } else {
+                    throw new InternalError(t.toString(), t);
+                }
             }
         });
     }

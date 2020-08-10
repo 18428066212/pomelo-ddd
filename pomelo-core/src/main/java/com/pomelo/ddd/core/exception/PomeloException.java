@@ -16,4 +16,8 @@ public class PomeloException extends RuntimeException {
     public PomeloException(String message, Throwable cause) {
         super(message, cause);
     }
+
+    public PomeloException(Throwable cause) {
+        super(cause);
+    }
 }

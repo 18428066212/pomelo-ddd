@@ -24,13 +24,19 @@ public class StudentController {
 
         Pomelo<StudentAggregate> pomelo = PomeloUtil.peel(StudentAggregate.class);
         pomelo.load(number);
-        return pomelo.command(
-                AttendYuWenKe
-                        .builder()
-                        .chapter("Chapter_1")
-                        .score(2)
-                        .build()
-        );
+        try {
+
+            return pomelo.command(
+                    AttendYuWenKe
+                            .builder()
+                            .chapter("Chapter_1")
+                            .score(2)
+                            .build()
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
