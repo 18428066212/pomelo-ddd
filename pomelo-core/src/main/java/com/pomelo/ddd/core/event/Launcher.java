@@ -3,7 +3,7 @@ package com.pomelo.ddd.core.event;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.exception.PomeloException;
 import com.pomelo.ddd.core.manager.EventHandlerManager;
-import com.pomelo.ddd.core.utils.ThreadPoolUtil;
+import com.pomelo.ddd.core.utils.EventHandleThreadPool;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -35,7 +35,7 @@ public class Launcher {
 
             if (EventEmitWay.ASYNC.equals(eventEmitWay)) {
 
-                ThreadPoolUtil.executeAsync(() -> {
+                EventHandleThreadPool.executeAsync(() -> {
                     try {
                         method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
                     } catch (IllegalAccessException | InvocationTargetException e) {

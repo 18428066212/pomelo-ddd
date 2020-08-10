@@ -7,11 +7,11 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public final class ThreadPoolUtil {
+public final class EventHandleThreadPool {
 
 //region private var
 
-    private ThreadPoolUtil() {
+    private EventHandleThreadPool() {
 
     }
 
@@ -39,7 +39,7 @@ public final class ThreadPoolUtil {
                 keepAliveTime,
                 timeUnit,
                 blockingQueue,
-                new ThreadFactoryBuilder().setNameFormat("pomelo-ddd-%d").build()
+                new ThreadFactoryBuilder().setNameFormat("pomelo-ddd-event-handle-%d").build()
         );
     }
 

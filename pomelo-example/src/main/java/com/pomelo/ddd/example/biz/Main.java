@@ -1,7 +1,7 @@
 package com.pomelo.ddd.example.biz;
 
 import com.pomelo.ddd.core.utils.PomeloUtil;
-import com.pomelo.ddd.core.utils.ThreadPoolUtil;
+import com.pomelo.ddd.core.utils.EventHandleThreadPool;
 import com.pomelo.ddd.example.biz.student.StudentAggregate;
 import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
 import com.pomelo.ddd.example.biz.student.entity.Student;
@@ -34,6 +34,6 @@ public class Main {
         }
         System.out.println(student);
 
-        ThreadPoolUtil.shutdown();
+        EventHandleThreadPool.shutdown();
     }
 }
