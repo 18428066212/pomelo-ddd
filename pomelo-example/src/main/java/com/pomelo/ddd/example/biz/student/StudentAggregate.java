@@ -30,18 +30,18 @@ public class StudentAggregate {
     @CommandHandler(AttendYuWenKe.class)
     public Student attendYuWenKe(AttendYuWenKe attendYuWenKe) {
 
-        if (this.student.isInClass()) {
+/*        if (this.student.isInClass()) {
             throw new RuntimeException("正在上课，不能参与新的课程");
-        }
+        }*/
         this.student.setInClass(true);
-
+/*
         try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        this.student.setInClass(false);
+//        this.student.setInClass(false);
 
         FinishCourseEvent finishCourseEvent = new FinishCourseEvent();
         finishCourseEvent.setStudent(this.student);
