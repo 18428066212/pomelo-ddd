@@ -26,6 +26,8 @@ public final class Cache {
 
     /**
      * 禁止其他包调用
+     * <p>
+     * 获取basePackage
      *
      * @param key
      * @param <T>
