@@ -1,11 +1,5 @@
 # pomelo-ddd
-# 领域驱动，通用语义化tools
-
-
-### 聚合
-### 命令
-### 事件
-
+# 领域驱动通用语义化tools
 
 ### demo
 pomelo-example
