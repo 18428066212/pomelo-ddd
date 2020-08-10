@@ -1,7 +1,7 @@
 package com.pomelo.ddd.starter.config;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author 何刚
@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public final class Cache {
 
-    private static Map<String, Object> cache = new HashMap<>();
+    private static final Map<String, Object> cache = new ConcurrentHashMap<>();
 
     /**
      * 禁止其他包调用
@@ -18,7 +18,7 @@ public final class Cache {
      * @param t
      * @param <T>
      */
-    protected synchronized static <T> void add(String key, T t) {
+    protected static <T> void add(String key, T t) {
         cache.put(key, t);
     }
 
