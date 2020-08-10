@@ -21,7 +21,7 @@ public class Launcher {
                 method.invoke(EventHandlerManager.getObject(aClass), t);
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
-                throw new PomeloException("Pomelo Exception");
+                throw new PomeloException("emit Pomelo Exception");
             }
         });
     }
@@ -32,30 +32,33 @@ public class Launcher {
         List<Method> methods = EventHandlerManager.getMethod(aClass);
 
         methods.forEach(method -> {
-
             if (EventEmitWay.ASYNC.equals(eventEmitWay)) {
-
-                EventHandleThreadPool.executeAsync(() -> {
-                    try {
-                        method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
-                    } catch (IllegalAccessException | InvocationTargetException e) {
-                        e.printStackTrace();
-                        throw new PomeloException("Pomelo Exception");
-                    }
-                });
-
+                asyncHandle(t, method);
             } else {
-                try {
-                    method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                    throw new PomeloException("Pomelo Exception");
-                }
+                syncHandle(t, method);
             }
-
-
         });
 
+    }
+
+    private static <T> void syncHandle(T t, Method method) {
+        try {
+            method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+            throw new PomeloException("syncHandle Pomelo Exception");
+        }
+    }
+
+    private static <T> void asyncHandle(T t, Method method) {
+        EventHandleThreadPool.executeAsync(() -> {
+            try {
+                method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+                throw new PomeloException("asyncHandle Pomelo Exception");
+            }
+        });
     }
 
 }
