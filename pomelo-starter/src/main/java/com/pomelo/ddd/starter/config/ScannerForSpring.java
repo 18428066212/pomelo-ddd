@@ -18,7 +18,4 @@ public final class ScannerForSpring {
         Scanner.scan(Cache.get(Const.backPackage));
         LOGGER.info("扫描结束，耗时:{}ms", System.currentTimeMillis() - start);
     }
-
-
-
 }
