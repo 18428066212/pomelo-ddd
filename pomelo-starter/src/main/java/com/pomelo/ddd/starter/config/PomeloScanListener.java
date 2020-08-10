@@ -1,6 +1,5 @@
 package com.pomelo.ddd.starter.config;
 
-import com.pomelo.ddd.core.utils.Scanner;
 import com.pomelo.ddd.starter.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,10 +19,8 @@ public class PomeloScanListener implements ApplicationListener<ContextRefreshedE
         }
         SpringUtil.setApplicationContext(event.getApplicationContext());
 
-        LOGGER.info("开始扫描");
-        long start = System.currentTimeMillis();
-        Scanner.scan(Cache.get(Const.backPackage));
-        LOGGER.info("扫描结束，耗时:{}ms", System.currentTimeMillis() - start);
+        Ready.applicationContextReady();
+
 
     }
 }

@@ -21,5 +21,7 @@ public class PomeloListener implements ApplicationListener<ApplicationEnvironmen
             return;
         }
         Cache.add(Const.backPackage, annotation.basePackage());
+        Ready.basePackageReady();
+
     }
 }
