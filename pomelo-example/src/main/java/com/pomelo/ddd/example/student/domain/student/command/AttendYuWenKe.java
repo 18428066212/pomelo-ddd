@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example.biz.student.command;
+package com.pomelo.ddd.example.student.domain.student.command;
 
 
 import com.pomelo.ddd.core.annotation.Command;
@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Command
 public class AttendYuWenKe {
+
+    private String studentNumber;
 
     private String chapter;
 

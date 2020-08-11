@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example.biz.student.command;
+package com.pomelo.ddd.example.student.domain.student.command;
 
 import com.pomelo.ddd.core.annotation.Command;
 import lombok.AllArgsConstructor;

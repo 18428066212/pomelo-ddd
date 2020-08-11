@@ -1,10 +1,10 @@
-package com.pomelo.ddd.example.biz;
+package com.pomelo.ddd.example.student;
 
 import com.pomelo.ddd.core.utils.PomeloUtil;
 import com.pomelo.ddd.core.utils.EventHandleThreadPool;
-import com.pomelo.ddd.example.biz.student.StudentAggregate;
-import com.pomelo.ddd.example.biz.student.command.AttendYuWenKe;
-import com.pomelo.ddd.example.biz.student.entity.Student;
+import com.pomelo.ddd.example.student.domain.student.StudentAggregate;
+import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.student.entity.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

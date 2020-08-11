@@ -1,8 +1,8 @@
-package com.pomelo.ddd.example.biz.student.event.handler;
+package com.pomelo.ddd.example.student.domain.student.event.handler;
 
 import com.pomelo.ddd.core.annotation.EventHandler;
-import com.pomelo.ddd.example.biz.student.event.FinishCourseEvent;
-import com.pomelo.ddd.example.biz.student.repository.StudentRepository;
+import com.pomelo.ddd.example.student.domain.student.event.FinishCourseEvent;
+import com.pomelo.ddd.example.student.infrastructure.db.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 @Service
