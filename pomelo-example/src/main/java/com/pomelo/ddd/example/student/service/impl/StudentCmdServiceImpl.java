@@ -8,6 +8,8 @@ import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
 import com.pomelo.ddd.example.student.domain.student.entity.Student;
 import com.pomelo.ddd.example.student.domain.student.event.FinishCourseEvent;
 import com.pomelo.ddd.example.student.service.StudentCmdService;
+import com.pomelo.ddd.example.student.service.StudentQueryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,15 +20,23 @@ import org.springframework.stereotype.Service;
 public class StudentCmdServiceImpl implements StudentCmdService {
 
 
+    @Autowired
+    private StudentQueryService studentQueryService;
+
     /**
-     * 用用服务进行，服务编排
-     * 服务编排，可以使用Disruptor
+     * 命令服务进行，服务编排
+     * 服务编排，可以使用Disruptor,支持多边形操作
      *
      * @param attendYuWenKe 命令
      */
     @Override
     public void attend(AttendYuWenKe attendYuWenKe) {
 
+
+        Student queryStudent = studentQueryService.query(attendYuWenKe.getStudentNumber());
+        if (queryStudent == null) {
+            throw new RuntimeException("参数错误");
+        }
 
         Student student = PomeloUtil.peel(StudentAggregate.class)
                 .load(attendYuWenKe.getStudentNumber())
