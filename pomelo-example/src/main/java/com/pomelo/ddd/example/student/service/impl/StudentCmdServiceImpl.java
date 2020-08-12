@@ -1,6 +1,5 @@
 package com.pomelo.ddd.example.student.service.impl;
 
-import com.pomelo.ddd.core.Pomelo;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.event.Launcher;
 import com.pomelo.ddd.core.utils.PomeloUtil;
@@ -29,20 +28,14 @@ public class StudentCmdServiceImpl implements StudentCmdService {
     public void attend(AttendYuWenKe attendYuWenKe) {
 
 
-        Pomelo<StudentAggregate> pomelo = PomeloUtil.peel(StudentAggregate.class);
-        pomelo.load(attendYuWenKe.getStudentNumber());
-        Student student = pomelo.command(
-                AttendYuWenKe
-                        .builder()
-                        .chapter("Chapter_1")
-                        .score(2)
-                        .build()
-        );
-
+        Student student = PomeloUtil.peel(StudentAggregate.class)
+                .load(attendYuWenKe.getStudentNumber())
+                .command(attendYuWenKe);
 
         FinishCourseEvent finishCourseEvent = new FinishCourseEvent();
         finishCourseEvent.setStudent(student);
         finishCourseEvent.setAttendYuWenKe(attendYuWenKe);
+
         Launcher.emit(finishCourseEvent, EventEmitWay.ASYNC);
 
 

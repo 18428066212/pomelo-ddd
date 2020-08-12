@@ -27,6 +27,7 @@ public class StudentAggregate {
     @CommandHandler(AttendYuWenKe.class)
     public Student attendYuWenKe(AttendYuWenKe attendYuWenKe) {
         this.student.setInClass(true);
+        studentRepository.addScore(this.student.getNumber(), attendYuWenKe.getScore());
         return this.student;
     }
 
