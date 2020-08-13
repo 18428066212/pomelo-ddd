@@ -30,9 +30,4 @@ public class StudentAggregateRoot {
         return this.student;
     }
 
-    public Student getStudent() {
-        return this.student;
-    }
-
-
 }
