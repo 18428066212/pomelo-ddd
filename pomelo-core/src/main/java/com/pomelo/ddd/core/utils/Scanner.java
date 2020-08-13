@@ -1,6 +1,6 @@
 package com.pomelo.ddd.core.utils;
 
-import com.pomelo.ddd.core.annotation.Aggregate;
+import com.pomelo.ddd.core.annotation.AggregateRoot;
 import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.EventHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
@@ -97,7 +97,7 @@ public class Scanner {
 
     @SuppressWarnings("unchecked")
     private static void scanAggregate(Reflections reflections) {
-        Set<Class<?>> aggregateClassSet = reflections.getTypesAnnotatedWith(Aggregate.class, true);
+        Set<Class<?>> aggregateClassSet = reflections.getTypesAnnotatedWith(AggregateRoot.class, true);
         for (Class<?> aClass : aggregateClassSet) {
             AggregateEntity aggregateEntity = new AggregateEntity();
             aggregateEntity.setAggregate(aClass);
