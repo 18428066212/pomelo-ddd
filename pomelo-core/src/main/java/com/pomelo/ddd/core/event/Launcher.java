@@ -1,7 +1,6 @@
 package com.pomelo.ddd.core.event;
 
 import com.pomelo.ddd.core.enums.EventEmitWay;
-import com.pomelo.ddd.core.exception.PomeloException;
 import com.pomelo.ddd.core.manager.EventHandlerManager;
 import com.pomelo.ddd.core.utils.EventHandleThreadPool;
 
@@ -19,9 +18,16 @@ public class Launcher {
         methods.forEach(method -> {
             try {
                 method.invoke(EventHandlerManager.getObject(aClass), t);
-            } catch (IllegalAccessException | InvocationTargetException e) {
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
-                throw new PomeloException("emit Pomelo Exception");
+                throw new InternalError(e.toString(), e);
+            } catch (InvocationTargetException e) {
+                Throwable th = e.getCause();
+                if (th instanceof RuntimeException) {
+                    throw (RuntimeException) th;
+                } else {
+                    throw new InternalError(th.toString(), th);
+                }
             }
         });
     }
@@ -42,23 +48,32 @@ public class Launcher {
     }
 
     private static <T> void syncHandle(T t, Method method) {
-        try {
-            method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-            throw new PomeloException("syncHandle Pomelo Exception");
-        }
+        execute(t, method);
     }
+
 
     private static <T> void asyncHandle(T t, Method method) {
         EventHandleThreadPool.executeAsync(() -> {
-            try {
-                method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-                throw new PomeloException("asyncHandle Pomelo Exception");
-            }
+            execute(t, method);
         });
     }
+
+
+    private static <T> void execute(T t, Method method) {
+        try {
+            method.invoke(EventHandlerManager.getObject(method.getDeclaringClass()), t);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            throw new InternalError(e.toString(), e);
+        } catch (InvocationTargetException e) {
+            Throwable th = e.getCause();
+            if (th instanceof RuntimeException) {
+                throw (RuntimeException) th;
+            } else {
+                throw new InternalError(th.toString(), th);
+            }
+        }
+    }
+
 
 }
