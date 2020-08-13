@@ -3,7 +3,7 @@ package com.pomelo.ddd.example.student.service.impl;
 import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.event.Launcher;
 import com.pomelo.ddd.core.utils.PomeloUtil;
-import com.pomelo.ddd.example.student.domain.StudentAggregate;
+import com.pomelo.ddd.example.student.domain.StudentAggregateRoot;
 import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 import com.pomelo.ddd.example.student.domain.entity.Student;
 import com.pomelo.ddd.example.student.domain.event.FinishCourseEvent;
@@ -38,7 +38,7 @@ public class StudentCmdServiceImpl implements StudentCmdService {
             throw new RuntimeException("参数错误");
         }
 
-        Student student = PomeloUtil.peel(StudentAggregate.class)
+        Student student = PomeloUtil.peel(StudentAggregateRoot.class)
                 .load(attendLanguage.getStudentNumber())
                 .command(attendLanguage);
 

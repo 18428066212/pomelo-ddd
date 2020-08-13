@@ -9,7 +9,7 @@ import com.pomelo.ddd.example.student.infrastructure.db.mysql.repository.Student
 import org.springframework.beans.factory.annotation.Autowired;
 
 @AggregateRoot
-public class StudentAggregate {
+public class StudentAggregateRoot {
 
 
     @Autowired
