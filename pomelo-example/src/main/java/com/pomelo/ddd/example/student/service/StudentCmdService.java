@@ -1,6 +1,6 @@
 package com.pomelo.ddd.example.student.service;
 
-import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 
 /**
  * @author 何刚
@@ -9,6 +9,6 @@ import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
 public interface StudentCmdService {
 
 
-    void attend(AttendYuWenKe attendYuWenKe);
+    void attend(AttendLanguage attendLanguage);
 
 }

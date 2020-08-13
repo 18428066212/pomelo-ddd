@@ -1,6 +1,6 @@
 package com.pomelo.ddd.example.student.controller;
 
-import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 import com.pomelo.ddd.example.student.domain.entity.Student;
 import com.pomelo.ddd.example.student.service.StudentCmdService;
 import com.pomelo.ddd.example.student.service.StudentQueryService;
@@ -29,10 +29,10 @@ public class StudentController {
     }
 
     @PostMapping("/{number}/attendYuWen")
-    public void attendYuWen(@PathVariable("number") String number, @RequestBody AttendYuWenKe attendYuWenKe) {
+    public void attendYuWen(@PathVariable("number") String number, @RequestBody AttendLanguage attendLanguage) {
 
-        attendYuWenKe.setStudentNumber(number);
-        studentCmdService.attend(attendYuWenKe);
+        attendLanguage.setStudentNumber(number);
+        studentCmdService.attend(attendLanguage);
 
     }
 

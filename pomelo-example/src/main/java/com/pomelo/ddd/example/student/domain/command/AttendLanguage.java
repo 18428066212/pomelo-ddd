@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Command
-public class AttendYuWenKe {
+public class AttendLanguage {
 
     private String studentNumber;
 

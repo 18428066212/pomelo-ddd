@@ -1,14 +1,14 @@
 package com.pomelo.ddd.example.student.domain.event;
 
 import com.pomelo.ddd.example.student.domain.entity.Student;
-import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 
 public class FinishCourseEvent {
 
 
     private Student student;
 
-    private AttendYuWenKe attendYuWenKe;
+    private AttendLanguage attendLanguage;
 
     public Student getStudent() {
         return student;
@@ -18,11 +18,11 @@ public class FinishCourseEvent {
         this.student = student;
     }
 
-    public AttendYuWenKe getAttendYuWenKe() {
-        return attendYuWenKe;
+    public AttendLanguage getAttendLanguage() {
+        return attendLanguage;
     }
 
-    public void setAttendYuWenKe(AttendYuWenKe attendYuWenKe) {
-        this.attendYuWenKe = attendYuWenKe;
+    public void setAttendLanguage(AttendLanguage attendLanguage) {
+        this.attendLanguage = attendLanguage;
     }
 }

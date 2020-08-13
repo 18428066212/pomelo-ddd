@@ -14,7 +14,7 @@ public class StudentEventHandler {
 
     @EventHandler(FinishCourseEvent.class)
     public void handleFinishCourseEvent(FinishCourseEvent finishCourseEvent) {
-        studentRepository.addScore(finishCourseEvent.getStudent().getNumber(), finishCourseEvent.getAttendYuWenKe().getScore());
+        studentRepository.addScore(finishCourseEvent.getStudent().getNumber(), finishCourseEvent.getAttendLanguage().getScore());
     }
 
 }

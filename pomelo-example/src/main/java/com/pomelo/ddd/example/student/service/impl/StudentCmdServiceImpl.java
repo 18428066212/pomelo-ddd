@@ -4,7 +4,7 @@ import com.pomelo.ddd.core.enums.EventEmitWay;
 import com.pomelo.ddd.core.event.Launcher;
 import com.pomelo.ddd.core.utils.PomeloUtil;
 import com.pomelo.ddd.example.student.domain.StudentAggregate;
-import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 import com.pomelo.ddd.example.student.domain.entity.Student;
 import com.pomelo.ddd.example.student.domain.event.FinishCourseEvent;
 import com.pomelo.ddd.example.student.service.StudentCmdService;
@@ -27,24 +27,24 @@ public class StudentCmdServiceImpl implements StudentCmdService {
      * 命令服务进行，服务编排
      * 服务编排，可以使用Disruptor,支持多边形操作
      *
-     * @param attendYuWenKe 命令
+     * @param attendLanguage 命令
      */
     @Override
-    public void attend(AttendYuWenKe attendYuWenKe) {
+    public void attend(AttendLanguage attendLanguage) {
 
 
-        Student queryStudent = studentQueryService.query(attendYuWenKe.getStudentNumber());
+        Student queryStudent = studentQueryService.query(attendLanguage.getStudentNumber());
         if (queryStudent == null) {
             throw new RuntimeException("参数错误");
         }
 
         Student student = PomeloUtil.peel(StudentAggregate.class)
-                .load(attendYuWenKe.getStudentNumber())
-                .command(attendYuWenKe);
+                .load(attendLanguage.getStudentNumber())
+                .command(attendLanguage);
 
         FinishCourseEvent finishCourseEvent = new FinishCourseEvent();
         finishCourseEvent.setStudent(student);
-        finishCourseEvent.setAttendYuWenKe(attendYuWenKe);
+        finishCourseEvent.setAttendLanguage(attendLanguage);
 
         Launcher.emit(finishCourseEvent, EventEmitWay.ASYNC);
 

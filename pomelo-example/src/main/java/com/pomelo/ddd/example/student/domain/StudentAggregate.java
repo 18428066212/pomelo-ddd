@@ -3,7 +3,7 @@ package com.pomelo.ddd.example.student.domain;
 import com.pomelo.ddd.core.annotation.Aggregate;
 import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
-import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendLanguage;
 import com.pomelo.ddd.example.student.domain.entity.Student;
 import com.pomelo.ddd.example.student.infrastructure.db.mysql.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +23,10 @@ public class StudentAggregate {
     }
 
 
-    @CommandHandler(AttendYuWenKe.class)
-    public Student attendYuWenKe(AttendYuWenKe attendYuWenKe) {
+    @CommandHandler(AttendLanguage.class)
+    public Student attendYuWenKe(AttendLanguage attendLanguage) {
         this.student.setInClass(true);
-        studentRepository.addScore(this.student.getNumber(), attendYuWenKe.getScore());
+        studentRepository.addScore(this.student.getNumber(), attendLanguage.getScore());
         return this.student;
     }
 
