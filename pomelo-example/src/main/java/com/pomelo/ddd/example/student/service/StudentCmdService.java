@@ -1,6 +1,6 @@
 package com.pomelo.ddd.example.student.service;
 
-import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
 
 /**
  * @author 何刚

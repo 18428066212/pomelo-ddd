@@ -1,6 +1,6 @@
 package com.pomelo.ddd.example.student.service;
 
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
+import com.pomelo.ddd.example.student.domain.entity.Student;
 
 /**
  * @author 何刚

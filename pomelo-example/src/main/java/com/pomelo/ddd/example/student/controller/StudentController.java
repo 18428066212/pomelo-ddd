@@ -1,7 +1,7 @@
 package com.pomelo.ddd.example.student.controller;
 
-import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
+import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.entity.Student;
 import com.pomelo.ddd.example.student.service.StudentCmdService;
 import com.pomelo.ddd.example.student.service.StudentQueryService;
 import org.springframework.beans.factory.annotation.Autowired;

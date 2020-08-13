@@ -1,7 +1,7 @@
-package com.pomelo.ddd.example.student.domain.student.event;
+package com.pomelo.ddd.example.student.domain.event;
 
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
-import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.entity.Student;
+import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
 
 public class FinishCourseEvent {
 

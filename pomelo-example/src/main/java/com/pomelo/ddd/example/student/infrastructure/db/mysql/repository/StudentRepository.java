@@ -1,6 +1,6 @@
-package com.pomelo.ddd.example.student.infrastructure.db.repository;
+package com.pomelo.ddd.example.student.infrastructure.db.mysql.repository;
 
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
+import com.pomelo.ddd.example.student.domain.entity.Student;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

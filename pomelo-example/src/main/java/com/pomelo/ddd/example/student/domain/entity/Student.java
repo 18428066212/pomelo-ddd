@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example.student.domain.student.entity;
+package com.pomelo.ddd.example.student.domain.entity;
 
 
 public class Student {

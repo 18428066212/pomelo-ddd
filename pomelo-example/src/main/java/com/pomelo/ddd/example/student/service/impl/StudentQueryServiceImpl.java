@@ -1,7 +1,7 @@
 package com.pomelo.ddd.example.student.service.impl;
 
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
-import com.pomelo.ddd.example.student.infrastructure.db.repository.StudentRepository;
+import com.pomelo.ddd.example.student.domain.entity.Student;
+import com.pomelo.ddd.example.student.infrastructure.db.mysql.repository.StudentRepository;
 import com.pomelo.ddd.example.student.service.StudentQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,13 +1,12 @@
-package com.pomelo.ddd.example.student.domain.student;
+package com.pomelo.ddd.example.student.domain;
 
 import com.pomelo.ddd.core.annotation.Aggregate;
 import com.pomelo.ddd.core.annotation.CommandHandler;
 import com.pomelo.ddd.core.annotation.LoadMethod;
-import com.pomelo.ddd.example.student.domain.student.command.AttendYuWenKe;
-import com.pomelo.ddd.example.student.domain.student.entity.Student;
-import com.pomelo.ddd.example.student.infrastructure.db.repository.StudentRepository;
+import com.pomelo.ddd.example.student.domain.command.AttendYuWenKe;
+import com.pomelo.ddd.example.student.domain.entity.Student;
+import com.pomelo.ddd.example.student.infrastructure.db.mysql.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Aggregate
 public class StudentAggregate {

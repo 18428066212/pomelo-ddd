@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
  *
  * @author 何刚
  * 有 @Autowired 或 @Resource 注解需要注入属性
+ * 注意：目前仅支持属性上的注解方式
  * @date 2020/8/10 12:50
  */
 public class AggregateResolverForSpring implements Resolver {

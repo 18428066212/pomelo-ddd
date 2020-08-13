@@ -1,4 +1,4 @@
-package com.pomelo.ddd.example.student.domain.student.command;
+package com.pomelo.ddd.example.student.domain.command;
 
 
 import com.pomelo.ddd.core.annotation.Command;
