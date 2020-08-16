@@ -28,8 +28,8 @@ public class StudentController {
         return studentQueryService.query(number);
     }
 
-    @PostMapping("/{number}/attendYuWen")
-    public void attendYuWen(@PathVariable("number") String number, @RequestBody AttendLanguage attendLanguage) {
+    @PostMapping("/{number}/attendLanguage")
+    public void attendLanguage(@PathVariable("number") String number, @RequestBody AttendLanguage attendLanguage) {
 
         attendLanguage.setStudentNumber(number);
         studentCmdService.attend(attendLanguage);
