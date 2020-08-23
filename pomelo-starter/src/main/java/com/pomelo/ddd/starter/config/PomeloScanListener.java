@@ -10,17 +10,16 @@ public class PomeloScanListener implements ApplicationListener<ContextRefreshedE
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PomeloScanListener.class);
 
-    private final boolean scan = false;
+    private boolean scan = false;
 
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    public synchronized void onApplicationEvent(ContextRefreshedEvent event) {
         if (scan) {
             return;
         }
         SpringUtil.setApplicationContext(event.getApplicationContext());
-
         Ready.applicationContextReady();
-
+        scan = true;
 
     }
 }
